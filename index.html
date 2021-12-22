@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
+  <title>To-do List - Raphael Martins</title>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Minha Lista de Tarefas</h1>
+    </header>
+    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+    <div class="painel-superior">
+      <input type="text" id="texto-tarefa">
+      <button id="criar-tarefa" class="positivo">Adicionar</button>
+    </div>
+    <ol id="lista-tarefas">
+    </ol>
+    <div class="painel-inferior">
+      <button id="remover-selecionado" class="icone negativo">🞬</button>
+      <button id="mover-cima" class="icone subir-descer">⮝</button>
+      <button id="mover-baixo" class="icone subir-descer">⮟</button>
+      <button id="remover-finalizados" class="negativo">Limpar Concluídos</button>
+      <button id="apaga-tudo" class="negativo">Limpar Lista</button>
+      <button id="salvar-tarefas" class="positivo">Salvar</button>
+    </div>
+  </main>
+  <footer>
+    <p>Projeto de HTML, CSS e JavaScript desenvolvido por <a href="https://www.linkedin.com/in/raphaelameidamartins/" rel="external">Raphael Martins</a>, todos os direitos reservados.</p>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>
