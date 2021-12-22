@@ -127,3 +127,8 @@ footer a {
 .subir-descer:hover {
   background-color: rgb(236 , 169 , 129);
 }
+
+#privacidade {
+  font-size: 18px;
+  margin-top: 40px;
+}
