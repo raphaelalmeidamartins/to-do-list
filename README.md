@@ -53,20 +53,20 @@
 ### Requirements
 <ol>
   <li>Add to your list the title <em>"Minha Lista de Tarefas"</em> (<em>"My To-do List"</em>) in a tag</li>
-  <li>Right below the title, add a small paragraph with <code>"funcionamento"</code> as its id, and with the text <em>"Clique duas vezes em um item para marcá-lo como completo"</em> (<em>"Click twice in a item to mark it as completed"</em>)</li>
-  <li>Add an input elemen with <code>id="texto-tarefa"</code> that the user can type the task they want to add to the list</li>
+  <li>Right below the title, add a small paragraph with <code>"funcionamento"</code> as its id, and with the text <em>"Clique duas vezes em um item para marcá-lo como completo"</em> (<em>"Click twice in an item to mark it as completed"</em>)</li>
+  <li>Add an input element with <code>id="texto-tarefa"</code> that the user can type the task they want to add to the list</li>
   <li>Add an ordered list with <code>id="lista-tarefas"</code></li>
   <li>Add a button element with <code>id="criar-tarefa"</code>, and when it's clicked, a new item should be added to the end of the list and the input should be cleaned</li>
   <li>Sort the list items by creation order</li>
   <li>Clicking in a list item should change its background color to gray <code>rgb(128,128,128)</code></li>
   <li>It shouldn't be possible to select more than one list item per time</li>
-  <li>Clicking twice in a list item, should strike out the item marking it as completed. Cliking twice in the same item again should undo this action
+  <li>Clicking twice in a list item, should strike out the item, marking it as completed. Clicking twice in the same item again should undo this action
     <ul>
       <li>Create a CSS class named <code>"completed"</code>  and define the property <code>text-decoration</code> with the value <code>line-through</code>.</li>
       <li>Use this class to add the effect struck out word to the completed tasks.</li>
     </ul>
   </li>
-  <li>Add a button elemnt with <code>id="apaga-tudo"</code> that when it's clicked all the list items are deleted</li>
+  <li>Add a button element with <code>id="apaga-tudo"</code> that when it's clicked all the list items are deleted</li>
   <li>Add a button element with <code>id="remover-finalizados"</code> that when it's clicked all the items marked as completed are deleted</li>
 </ol>
 
@@ -75,7 +75,7 @@
   <li>Add a button element with <code>id="salvar-tarefas"</code> that when it's clicked the list content is saved. If you enter the page again, the list should stay the same way it was left</li>
   <li>Add two button elements, on with <code>id="mover-cima"</code> and the other with <code>id="mover-baixo"</code>. When they are clicked, the selected item should be moved to above or below in the to-do list
     <ul>
-      <li>Before starting the development of this feature, stop and think: what does it mean to move an item to above or to below in the <strong><em>DOM</em></strong>? You've already have all the skills needed to be able to do that.</li>
+      <li>Before starting the development of this feature, stop and think: what does it mean to move an item to above or to below in the <strong><em>DOM</em></strong>? You've already hed all the skills needed to be able to do that.</li>
       <li>Consider all scenarios when you are developing a program. What happens if the user try to move the first item to above or the last item to below?</li>
     </ul>
   </li>
