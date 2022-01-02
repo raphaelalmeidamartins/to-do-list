@@ -4,7 +4,7 @@
 
 # To-do List
 <h2>:brazil: Português</h2>
-<p id="pt">Projeto de HTML, CSS e JavaScript desenvolvido por mim (<a href="https://www.linkedin.com/in/raphaelameidamartins/" target="_blank" rel="external">Raphael Martins</a>) ao final do Bloco 5 do Módulo 1 do curso de Desenvolvimento Web da <a href="https://www.betrybe.com" targe="_blank" rel="nofollow">Trybe</a>. Obtive aprovação com 100% dos requisitos obrigatórios e opcionais atingidos, e seguindo as todas as regras de padronização do código e boas práticas do Linter.</p>
+<p id="pt">Projeto de HTML, CSS e JavaScript desenvolvido por mim (<a href="https://www.linkedin.com/in/raphaelameidamartins/" target="_blank" rel="external">Raphael Martins</a>) ao final do Bloco 5 do Módulo 1 do curso de Desenvolvimento Web da <a href="https://www.betrybe.com" targe="_blank" rel="nofollow">Trybe</a>. Obtive aprovação com 100% dos requisitos obrigatórios e opcionais atingidos.</p>
 <p>O projeto consistiu no desenvolvimento de uma página web dinâmica e interativa em que a pessoa usuária pode adicionar itens a uma lista de tarefas, alterar a ordem deles, marcá-los como concluídos ou excluí-los. Também é possível salvar para que ao acessar a página novamente, a lista esteja como foi deixada.</p>
 <p><a href="https://raphaelalmeidamartins.github.io/project-to-do-list/" target="_blank">Clique aqui</a> para conferir o resultado do projeto no navegador.</p>
 
@@ -44,8 +44,8 @@
 <br>
 
 <h2 id="en">:us: English</h2>
-<p>Project of HTML, CSS and JavaScript develop by me (<a href="https://www.linkedin.com/in/raphaelameidamartins/" target="_blank" rel="external">Raphael Martins</a>) in the end of the Unit 5 Module 1 of the Web Development course at <a href="https://www.betrybe.com" targe="_blank" rel="nofollow">Trybe</a>. I was approved with 100% of the mandatory and optional requirements met, and following all the Linter rules of best practices and code standardization.</p>
-<p>We had to develop a dynamic and interactive web page that the user can add items to a to-do list, change their order, mark them as completed or delete them. It's also possible to save the list, so when the user enters the page again, it is the same way as it was left.</p>
+<p>Project of HTML, CSS, and JavaScript developed by me (<a href="https://www.linkedin.com/in/raphaelameidamartins/" target="_blank" rel="external">Raphael Martins</a>) at the end of the Unit 5 Module 1 of the Web Development course at <a href="https://www.betrybe.com" targe="_blank" rel="nofollow">Trybe</a>. I was approved with 100% of the mandatory and optional requirements met.</p>
+<p>We developed a dynamic and interactive web page with a to-do list application. The user can change the order of the list items, mark them as completed, or delete them. It's also possible to save the list, so when the user enters the page again, it is the same way as it was left.</p>
 <p><a href="https://raphaelalmeidamartins.github.io/project-to-do-list/" target="_blank">Click here</a> to check out the final version of the project on your browser.</p>
 
 ![My grade of the project - Minha nota no projeto](./nota.png)
@@ -58,9 +58,9 @@
   <li>Add an ordered list with <code>id="lista-tarefas"</code></li>
   <li>Add a button element with <code>id="criar-tarefa"</code>, and when it's clicked, a new item should be added to the end of the list and the input should be cleaned</li>
   <li>Sort the list items by creation order</li>
-  <li>Clicking in a list item should change its background color to gray <code>rgb(128,128,128)</code></li>
+  <li>clicking on a list item should change its background color to gray <code>rgb(128,128,128)</code></li>
   <li>It shouldn't be possible to select more than one list item per time</li>
-  <li>Clicking twice in a list item, should strike out the item, marking it as completed. Clicking twice in the same item again should undo this action
+  <li>Clicking twice on a list item should strike out the item, marking it as completed. Clicking twice in the same item again should undo this action
     <ul>
       <li>Create a CSS class named <code>"completed"</code>  and define the property <code>text-decoration</code> with the value <code>line-through</code>.</li>
       <li>Use this class to add the effect struck out word to the completed tasks.</li>
@@ -76,7 +76,7 @@
   <li>Add two button elements, on with <code>id="mover-cima"</code> and the other with <code>id="mover-baixo"</code>. When they are clicked, the selected item should be moved to above or below in the to-do list
     <ul>
       <li>Before starting the development of this feature, stop and think: what does it mean to move an item to above or to below in the <strong><em>DOM</em></strong>? You've already hed all the skills needed to be able to do that.</li>
-      <li>Consider all scenarios when you are developing a program. What happens if the user try to move the first item to above or the last item to below?</li>
+      <li>Consider all scenarios when you are developing a program. What happens if the user tries to move the first item to above or the last item to below?</li>
     </ul>
   </li>
   <li>Add a button element with <code>id="remover-selecionado"</code>, that when it's clicked it removes the selected item</li>
