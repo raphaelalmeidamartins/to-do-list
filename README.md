@@ -53,14 +53,14 @@
 ### Requirements
 <ol>
   <li>Add to your list the title <em>"Minha Lista de Tarefas"</em> (<em>"My To-do List"</em>) in a tag</li>
-  <li>Right below the title, add a small paragraph with <code>"funcionamento"</code> as its id, and with the text <em>"Clique duas vezes em um item para marcá-lo como completo"</em> (<em>"Click twice in an item to mark it as completed"</em>)</li>
+  <li>Right below the title, add a small paragraph with <code>"funcionamento"</code> as its id, and with the text <em>"Clique duas vezes em um item para marcá-lo como completo"</em> (<em>"Click twice an item to mark it as completed"</em>)</li>
   <li>Add an input element with <code>id="texto-tarefa"</code> that the user can type the task they want to add to the list</li>
   <li>Add an ordered list with <code>id="lista-tarefas"</code></li>
   <li>Add a button element with <code>id="criar-tarefa"</code>, and when it's clicked, a new item should be added to the end of the list and the input should be cleaned</li>
   <li>Sort the list items by creation order</li>
-  <li>clicking on a list item should change its background color to gray <code>rgb(128,128,128)</code></li>
+  <li>clicking a list item should change its background color to gray <code>rgb(128,128,128)</code></li>
   <li>It shouldn't be possible to select more than one list item per time</li>
-  <li>Clicking twice on a list item should strike out the item, marking it as completed. Clicking twice in the same item again should undo this action
+  <li>Clicking twice a list item should strike out the item, marking it as completed. Clicking twice the same item again should undo this action
     <ul>
       <li>Create a CSS class named <code>"completed"</code>  and define the property <code>text-decoration</code> with the value <code>line-through</code>.</li>
       <li>Use this class to add the effect struck out word to the completed tasks.</li>
