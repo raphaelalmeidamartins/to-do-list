@@ -24,25 +24,31 @@
           </div>
         </div>
         <ol id="lista-tarefas">
+          <li><span class="far fa-square checkbox"></span><span class="list-text">Teste</span><span class="fas fa-edit remove-button"></span><span class="fas fa-trash-alt remove-button" id="remover-selecionado" title="Excluir selecionado"></span></li>
+          <li><span class="far fa-square checkbox"></span><span class="list-text">Teste2</span><span class="fas fa-trash-alt remove-button"></span></li>
         </ol>
         <div class="painel-inferior">
-          <div class="button-capsule">
-            <button id="remover-selecionado" class="fas fa-chevron-circle-up icone" title="Excluir selecionado"></button>
+          <!-- <div class="button-capsule">
+            <button id="remover-selecionado" class="fas fa-times icone remover" title="Excluir selecionado"></button>
+          </div> -->
+          <div class="container-move-buttons">
+            <div class="button-capsule">
+              <button id="mover-cima" class="fas fa-caret-up icone subir-descer" title="Mover para cima"></button>
+            </div>
+            <div class="button-capsule">
+              <button id="mover-baixo" class="fas fa-caret-down icone subir-descer" title="Mover para baixo"></button>
+            </div>
           </div>
-          <div class="button-capsule">
-            <button id="mover-cima" class="fas fa-caret-up icone subir-descer" title="Mover para cima"></button>
-          </div>
-          <div class="button-capsule">
-            <button id="mover-baixo" class="icone subir-descer" title="Mover para baixo">⮟</button>
-          </div>
-          <div class="button-capsule">
-            <button id="remover-finalizados" class="negativo">Limpar Concluídos</button>
-          </div>
-          <div class="button-capsule">
-            <button id="apaga-tudo" class="negativo">Limpar Lista</button>
-          </div>
-          <div class="button-capsule">
-            <button id="salvar-tarefas" class="positivo">Salvar</button>
+          <div class="container-other-buttons">
+            <div class="button-capsule">
+              <button id="remover-finalizados" class="negativo">Limpar Concluídos</button>
+            </div>
+            <div class="button-capsule">
+              <button id="apaga-tudo" class="negativo">Limpar Lista</button>
+            </div>
+            <div class="button-capsule">
+              <button id="salvar-tarefas" class="positivo">Salvar</button>
+            </div>
           </div>
         </div>
       </section>
