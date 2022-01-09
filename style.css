@@ -13,6 +13,11 @@
 }
 
 body {
+  display: flex;
+  height: 100vh;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
   font-family: Quicksand, sans-serif;
   font-weight: 300;
   font-size: 20px;
@@ -22,16 +27,27 @@ body {
 
 main {
   background-color: rgb(248 , 228 , 193);
-  width: 800px;
-  height: fit-content;
-  margin: 50px auto auto;
-  padding: 40px;
-  border-radius: 10px;
+  flex-basis: content;
+  box-shadow: 0 0 1rem rgb(156, 71, 21);
+  border-radius: 1rem;
 }
 
-h1 {
-  font-weight: 600;
-  margin: 15px 0;
+#container-list {
+  padding: 1.5rem;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.8rem 2rem;
+  border-radius: 1rem 1rem 0 0;
+  background-color: rgb(46 , 13 , 35);
+}
+
+header h1 {
+  font-weight: 700;
+  color: rgb(248 , 228 , 193);
 }
 
 p {
@@ -70,7 +86,7 @@ input {
 }
 
 footer {
-  margin: 30px auto 0;
+  margin: 30px 0;
   text-align: center;
   font-size: 18px;
 }

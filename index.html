@@ -10,30 +10,32 @@
 </head>
 <body>
   <main>
-    <section>
-      <header>
-        <h1>Minha Lista de Tarefas</h1>
-      </header>
-      <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-      <div class="painel-superior">
-        <input type="text" id="texto-tarefa">
-        <button id="criar-tarefa" class="positivo">Adicionar</button>
-      </div>
-      <ol id="lista-tarefas">
-      </ol>
-      <div class="painel-inferior">
-        <button id="remover-selecionado" class="icone negativo" title="Excluir selecionado">🞬</button>
-        <button id="mover-cima" class="icone subir-descer" title="Mover para cima">⮝</button>
-        <button id="mover-baixo" class="icone subir-descer" title="Mover para baixo">⮟</button>
-        <button id="remover-finalizados" class="negativo">Limpar Concluídos</button>
-        <button id="apaga-tudo" class="negativo">Limpar Lista</button>
-        <button id="salvar-tarefas" class="positivo">Salvar</button>
-      </div>
-    </section>
-    <aside id="privacidade">
-      <h4>Aviso de privacidade:</h6>
-      <p>Esta aplicação não utiliza cookies, os dados ficam armazenados no seu navegador.</p>
-    </aside>
+    <header>
+      <h1>Minha Lista de Tarefas</h1>
+    </header>
+    <div id="container-list">
+      <section>
+        <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+        <div class="painel-superior">
+          <input type="text" id="texto-tarefa">
+          <button id="criar-tarefa" class="positivo">Adicionar</button>
+        </div>
+        <ol id="lista-tarefas">
+        </ol>
+        <div class="painel-inferior">
+          <button id="remover-selecionado" class="icone negativo" title="Excluir selecionado">🞬</button>
+          <button id="mover-cima" class="icone subir-descer" title="Mover para cima">⮝</button>
+          <button id="mover-baixo" class="icone subir-descer" title="Mover para baixo">⮟</button>
+          <button id="remover-finalizados" class="negativo">Limpar Concluídos</button>
+          <button id="apaga-tudo" class="negativo">Limpar Lista</button>
+          <button id="salvar-tarefas" class="positivo">Salvar</button>
+        </div>
+      </section>
+      <aside id="privacidade">
+        <h4>Aviso de privacidade:</h6>
+        <p>Esta aplicação não utiliza cookies, os dados ficam armazenados no seu navegador.</p>
+      </aside>
+    </div>
   </main>
   <footer>
     <p>Projeto de HTML, CSS e JavaScript desenvolvido por <a href="https://www.linkedin.com/in/raphaelameidamartins/" rel="external">Raphael Martins</a>, todos os direitos reservados.</p>
