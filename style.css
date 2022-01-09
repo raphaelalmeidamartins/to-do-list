@@ -85,7 +85,7 @@
     flex-grow: 1;
   }
   
-  .remove-button {
+  .remove-button, .edit-button {
     margin-left: 12px;
     color: rgb(46 , 13 , 35);
     opacity: 0.5;

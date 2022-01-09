@@ -15,9 +15,8 @@ function selectListItem(click) {
   selectedItem.classList.add('selected');
 }
 
-function removeSelectedListItem() {
-  const selectedItem = document.querySelector('.selected');
-  taskList.removeChild(selectedItem);
+function removeSelectedListItem(event) {
+  taskList.removeChild(event.target.parentNode);
 }
 
 buttonRemoveSelectedTask.addEventListener('click', removeSelectedListItem);
@@ -72,15 +71,39 @@ function clearCompletedTasks() {
 const buttonClearCompletedItems = document.getElementById('remover-finalizados');
 buttonClearCompletedItems.addEventListener('click', clearCompletedTasks);
 
+function createCheckbox() {
+  const newCheckbox = document.createElement('span');
+  newCheckbox.className = 'far fa-square checkbox';
+  newCheckbox.title = 'Marcar item como concluído';
+  return newCheckbox;
+}
+
+function createEditButton() {
+  const newEditButton = document.createElement('span');
+  newEditButton.className = 'fas fa-edit edit-button';
+  newEditButton.title = 'Editar item';
+  return newEditButton;
+}
+
+function createRemoveButton() {
+  const newRemoveButton = document.createElement('span');
+  newRemoveButton.className = 'fas fa-trash-alt remove-button';
+  newRemoveButton.title = 'Remover item';
+  newRemoveButton.addEventListener('click', removeSelectedListItem);
+  return newRemoveButton;
+}
+
 function addTaskOnTheList() {
   if (inputTaks.value) {
     const newTask = document.createElement('li');
-    newTask.className = 'task';
-    newTask.addEventListener('click', selectListItem);
-    newTask.addEventListener('dblclick', markItemAsCompleted);
-    newTask.innerHTML = inputTaks.value;
+    newTask.appendChild(createCheckbox());
+    const newTaskText = document.createElement('span');
+    newTaskText.className = 'list-text';
+    newTaskText.innerHTML = inputTaks.value;
+    newTask.appendChild(newTaskText);
+    newTask.appendChild(createEditButton());
+    newTask.appendChild(createRemoveButton());
     taskList.appendChild(newTask);
-    inputTaks.value = '';
   }
 }
 
