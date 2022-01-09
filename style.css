@@ -11,7 +11,6 @@
 @media screen and (min-width: 790px) and (min-height: 790px) {
   body {
     display: flex;
-    height: 100vh;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
@@ -22,9 +21,9 @@
   }
   
   main {
+    margin:auto auto;
     background-color: rgb(248 , 228 , 193);
     flex-basis: content;
-    box-shadow: 0 0 1rem rgb(156, 71, 21);
     border-radius: 1rem;
     transition: 400ms;
   }
@@ -62,10 +61,11 @@
   }
   
   ol li {
+    padding: 5px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 50px;
+    height: 40px;
     font-size: 20px;
     transition: 400ms;
     border-bottom: 1px solid rgba(46 , 13 , 35, 0.5);
@@ -91,7 +91,7 @@
     opacity: 0.5;
   }
   
-  .remove-button:hover {
+  .remove-button:hover, .edit-button:hover {
     opacity: 1;
   }
   
@@ -127,8 +127,11 @@
     height: 22px;
     padding: 0.8rem;
     margin-right: 12px;
-    /* border: 2px solid rgb(226, 221, 213); */
     border-radius: 0.5rem;
+  }
+
+  input.edit-input {
+    height: 12px;
   }
   
   footer {
@@ -172,6 +175,7 @@
   }
   
   .completed {
+    font-style: italic;
     text-decoration: line-through solid black;
   }
   

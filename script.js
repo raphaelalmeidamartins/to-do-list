@@ -4,7 +4,7 @@ const buttonAddTask = document.getElementById('criar-tarefa');
 const buttonSaveTasks = document.getElementById('salvar-tarefas');
 const buttonMoveToAbove = document.getElementById('mover-cima');
 const buttonMoveToBelow = document.getElementById('mover-baixo');
-const buttonRemoveSelectedTask = document.getElementById('remover-selecionado');
+// const buttonRemoveSelectedTask = document.getElementById('remover-selecionado');
 
 function selectListItem(click) {
   const selectedItem = click.target;
@@ -19,14 +19,67 @@ function removeSelectedListItem(event) {
   taskList.removeChild(event.target.parentNode);
 }
 
-buttonRemoveSelectedTask.addEventListener('click', removeSelectedListItem);
+// buttonRemoveSelectedTask.addEventListener('click', removeSelectedListItem);
 
-function markItemAsCompleted(dblclick) {
-  const markedItem = dblclick.target;
-  if (markedItem.classList.contains('completed')) {
-    markedItem.classList.remove('completed');
+function markItemAsCompleted(click) {
+  const markedItem = click.target;
+  if (markedItem.classList.contains('fa-square')) {
+    markedItem.classList.remove('fa-square');
+    markedItem.classList.add('fa-check-square');
+    markedItem.nextElementSibling.classList.add('completed');
+  } else if (markedItem.classList.contains('fa-check-square')) {
+    markedItem.classList.remove('fa-check-square');
+    markedItem.classList.add('fa-square');
+    markedItem.nextElementSibling.classList.remove('completed');
+  }
+}
+
+function editButtonAction(click) {
+  const editInput = click.target.previousElementSibling;
+  const currentTask = editInput.previousElementSibling;
+  editInput.value = currentTask.innerHTML;
+  currentTask.style.display = 'none';
+  editInput.style.display = 'flex';
+  editInput.focus();
+}
+
+function editTask(input) {
+  const editInput = input;
+  const currentTask = editInput.previousElementSibling;
+  if (editInput.value) {
+    currentTask.innerHTML = editInput.value;
+    editInput.style.display = 'none';
+    currentTask.style.display = 'flex';
+    editInput.value = '';
   } else {
-    markedItem.classList.add('completed');
+    editInput.style.display = 'none';
+    currentTask.style.display = 'flex';
+    editInput.value = '';
+  }
+}
+
+// function editTaskChange(change) {
+//   const editInput = change.target;
+//   const currentTask = editInput.previousElementSibling;
+//   if (editInput.value) {
+//     currentTask.innerHTML = editInput.value;
+//     editInput.style.display = 'none';
+//     currentTask.style.display = 'flex';
+//     editInput.value = '';
+//   } else {
+//     editInput.style.display = 'none';
+//     currentTask.style.display = 'flex';
+//     editInput.value = '';
+//   }
+// }
+
+function changeToEditTask(event) {
+  editTask(event.target);
+}
+
+function pressEnterToEditTask(event) {
+  if (event.key === 'Enter') {
+    editTask(event.target);
   }
 }
 
@@ -74,21 +127,42 @@ buttonClearCompletedItems.addEventListener('click', clearCompletedTasks);
 function createCheckbox() {
   const newCheckbox = document.createElement('span');
   newCheckbox.className = 'far fa-square checkbox';
-  newCheckbox.title = 'Marcar item como concluído';
+  newCheckbox.title = 'Marcar tarefa como concluída';
+  newCheckbox.addEventListener('click', markItemAsCompleted);
   return newCheckbox;
+}
+
+function createTaskText(string) {
+  const newTaskText = document.createElement('span');
+  newTaskText.className = 'list-text';
+  newTaskText.title = 'Tarefa';
+  newTaskText.innerHTML = string;
+  return newTaskText;
 }
 
 function createEditButton() {
   const newEditButton = document.createElement('span');
   newEditButton.className = 'fas fa-edit edit-button';
-  newEditButton.title = 'Editar item';
+  newEditButton.title = 'Editar tarefa';
+  newEditButton.addEventListener('click', editButtonAction);
   return newEditButton;
+}
+
+function createInputEditTask() {
+  const newEditInput = document.createElement('input');
+  newEditInput.type = 'text';
+  newEditInput.className = 'edit-input';
+  newEditInput.style.display = 'none';
+  newEditInput.style.flexGrow = '1';
+  newEditInput.addEventListener('keypress', pressEnterToEditTask);
+  newEditInput.addEventListener('blur', changeToEditTask);
+  return newEditInput;
 }
 
 function createRemoveButton() {
   const newRemoveButton = document.createElement('span');
   newRemoveButton.className = 'fas fa-trash-alt remove-button';
-  newRemoveButton.title = 'Remover item';
+  newRemoveButton.title = 'Remover tarefa';
   newRemoveButton.addEventListener('click', removeSelectedListItem);
   return newRemoveButton;
 }
@@ -97,10 +171,8 @@ function addTaskOnTheList() {
   if (inputTaks.value) {
     const newTask = document.createElement('li');
     newTask.appendChild(createCheckbox());
-    const newTaskText = document.createElement('span');
-    newTaskText.className = 'list-text';
-    newTaskText.innerHTML = inputTaks.value;
-    newTask.appendChild(newTaskText);
+    newTask.appendChild(createTaskText(inputTaks.value));
+    newTask.appendChild(createInputEditTask());
     newTask.appendChild(createEditButton());
     newTask.appendChild(createRemoveButton());
     taskList.appendChild(newTask);
