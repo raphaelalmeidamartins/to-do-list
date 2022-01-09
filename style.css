@@ -60,6 +60,7 @@ header h1 {
 ol {
   list-style-position: inside;
   margin: 1.5rem 0;
+  transition: 400ms;
 }
 
 ol li {
@@ -83,7 +84,6 @@ ol li {
 button {
   font-family: Quicksand, sans-serif;
   font-size: 20px;
-  padding: 10px 20px;
   border-radius: 0.8rem;
 }
 
@@ -138,25 +138,29 @@ footer a {
 }
 
 .icone {
-  font-family: 'Noto Sans Symbols 2', sans-serif;
+  width: 45px;
+  font-size: 45px;
   border-radius: 100%;
+  background-color: rgb(248 , 228 , 193);
 }
 
 .negativo {
   background-color: rgb(245 , 72 , 40);
   color: rgb(248 , 228 , 193);
   box-shadow: 0px 5px rgb(141, 34, 15);
+  padding: 10px 20px;
 }
 
 .positivo {
   background-color: rgb(76 , 96 , 141);
   color: rgb(248 , 228 , 193);
   box-shadow: 0px 5px rgb(37, 52, 87);
+  padding: 10px 20px;
 }
 
 .subir-descer {
-  background-color: rgb(247 , 128 , 60);
   color: rgb(248 , 228 , 193);
+  background-color: rgb(247 , 128 , 60);;
   box-shadow: 0px 5px rgb(150, 69, 22);
 }
 
