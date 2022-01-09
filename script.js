@@ -4,22 +4,35 @@ const buttonAddTask = document.getElementById('criar-tarefa');
 const buttonSaveTasks = document.getElementById('salvar-tarefas');
 const buttonMoveToAbove = document.getElementById('mover-cima');
 const buttonMoveToBelow = document.getElementById('mover-baixo');
-// const buttonRemoveSelectedTask = document.getElementById('remover-selecionado');
-
-function selectListItem(click) {
-  const selectedItem = click.target;
-  const previousSelectedItem = document.querySelector('.selected');
-  if (previousSelectedItem) {
-    previousSelectedItem.classList.remove('selected');
-  }
-  selectedItem.classList.add('selected');
-}
 
 function removeSelectedListItem(event) {
   taskList.removeChild(event.target.parentNode);
 }
 
-// buttonRemoveSelectedTask.addEventListener('click', removeSelectedListItem);
+function mouseOverElement(event) {
+  const draggedOverElement = event.target;
+  const previousDraggedOverElement = document.querySelector('.dragover');
+  if (previousDraggedOverElement) {
+    previousDraggedOverElement.classList.remove('dragover');
+  }
+  if (draggedOverElement.tagName === 'LI') {
+    draggedOverElement.classList.add('dragover');
+  }
+}
+
+function draggingItem(event) {
+  event.target.classList.add('dragging');
+}
+
+function draggingEnd(event) {
+  const draggedItem = event.target;
+  draggedItem.classList.remove('dragging');
+  const otherElement = document.querySelector('dragover');
+  if (otherElement) {
+    draggedItem.remove();
+  taskList.insertBefore(otherElement, draggedItem);
+  }
+}
 
 function markItemAsCompleted(click) {
   const markedItem = click.target;
@@ -57,21 +70,6 @@ function editTask(input) {
     editInput.value = '';
   }
 }
-
-// function editTaskChange(change) {
-//   const editInput = change.target;
-//   const currentTask = editInput.previousElementSibling;
-//   if (editInput.value) {
-//     currentTask.innerHTML = editInput.value;
-//     editInput.style.display = 'none';
-//     currentTask.style.display = 'flex';
-//     editInput.value = '';
-//   } else {
-//     editInput.style.display = 'none';
-//     currentTask.style.display = 'flex';
-//     editInput.value = '';
-//   }
-// }
 
 function changeToEditTask(event) {
   editTask(event.target);
@@ -175,6 +173,10 @@ function addTaskOnTheList() {
     newTask.appendChild(createInputEditTask());
     newTask.appendChild(createEditButton());
     newTask.appendChild(createRemoveButton());
+    newTask.addEventListener('dragover', mouseOverElement);
+    newTask.addEventListener('dragstart', draggingItem);
+    newTask.addEventListener('dragend', draggingEnd);
+    newTask.draggable = 'true';
     taskList.appendChild(newTask);
   }
 }
@@ -208,7 +210,6 @@ function loadSavedTasks() {
     const newTask = document.createElement('li');
     newTask.innerHTML = localStorage.getItem(`${i + 1}`);
     newTask.className = localStorage.getItem(`${i + 1} className`);
-    newTask.addEventListener('click', selectListItem);
     newTask.addEventListener('dblclick', markItemAsCompleted);
     taskList.appendChild(newTask);
   }
