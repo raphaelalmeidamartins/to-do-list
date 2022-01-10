@@ -27,10 +27,9 @@ function draggingItem(event) {
 function draggingEnd(event) {
   const draggedItem = event.target;
   draggedItem.classList.remove('dragging');
-  const otherElement = document.querySelector('dragover');
+  const otherElement = document.querySelector('.dragover');
   if (otherElement) {
-    draggedItem.remove();
-  taskList.insertBefore(otherElement, draggedItem);
+    taskList.insertBefore(draggedItem, otherElement.nextElementSibling);
   }
 }
 
