@@ -103,6 +103,13 @@ function clearCompletedTasks() {
 const buttonClearCompletedItems = document.getElementById('remover-finalizados');
 buttonClearCompletedItems.addEventListener('click', clearCompletedTasks);
 
+function createGrip() {
+  const newGrip = document.createElement('span');
+  newGrip.className = 'fas fa-grip-vertical grip';
+  newGrip.title = 'Mover item de posição';
+  return newGrip;
+}
+
 function createCheckbox() {
   const newCheckbox = document.createElement('span');
   newCheckbox.className = 'far fa-square checkbox';
@@ -190,9 +197,11 @@ function addEventListenersToTasks(task) {
   task.draggable = 'true';
 }
 
+// eslint-disable-next-line max-statements
 function addTaskOnTheList() {
   if (inputTaks.value) {
     const newTask = document.createElement('li');
+    newTask.appendChild(createGrip());
     newTask.appendChild(createCheckbox());
     newTask.appendChild(createTaskText(inputTaks.value));
     newTask.appendChild(createInputEditTask());

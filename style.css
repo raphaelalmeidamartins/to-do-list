@@ -69,7 +69,7 @@
     font-size: 20px;
     transition: 400ms;
     border-bottom: 1px solid rgba(46 , 13 , 35, 0.5);
-    cursor: move;
+    /* cursor: move; */
   }
   
   li.dragging {
@@ -78,6 +78,17 @@
 
   li.dragover {
     background-color: rgb(196, 176, 142);
+  }
+
+  .grip {
+    font-size: 25px;
+    margin-right: 12px;
+    opacity: 0.5;
+    cursor: move;
+  }
+
+  .grip:hover {
+    opacity: 1;
   }
 
   .checkbox {
