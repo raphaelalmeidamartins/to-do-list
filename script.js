@@ -9,6 +9,8 @@ const buttonSaveTasks = document.getElementById('salvar-tarefas');
 const buttonMoveToAbove = document.getElementById('mover-cima');
 const buttonMoveToBelow = document.getElementById('mover-baixo');
 
+let dragStartIndex = 0;
+
 function removeSelectedListItem(event) {
   taskList.removeChild(event.target.parentNode);
 }
@@ -144,26 +146,39 @@ function createRemoveButton() {
   return newRemoveButton;
 }
 
+// Lógica para mover itens da lista foi inspirada nessa vídeoaula: https://youtu.be/wv7pvH1O5Ho
+
 function dragOver(event) {
   event.preventDefault();
 }
 
-function dragStart() {
-  console.log('dragstart disparado');
+function dragStart(event) {
+  event.target.classList.add('dragging');
+  dragStartIndex = [...taskList.children].indexOf(event.target);
 }
 
 function dragEntersElement(event) {
-  console.log('dragenter disparado');
   event.target.classList.add('dragover');
 }
 
 function dragLeavesElement(event) {
-  console.log('dragleaves disparado');
   event.target.classList.remove('dragover');
 }
 
-function dropElement() {
-  console.log('drop disparado');
+function swapListItems(origin, destination) {
+  const arrayListItems = [...taskList.children];
+  const firstItem = arrayListItems[origin];
+  const secondItem = arrayListItems[destination];
+
+  taskList.insertBefore(firstItem, secondItem.nextSibling);
+}
+
+function dropElement(event) {
+  event.target.classList.remove('dragover');
+  const dragEndIndex = [...taskList.children].indexOf(event.target);
+  const draggedElement = document.querySelector('.dragging');
+  draggedElement.classList.remove('dragging');
+  swapListItems(dragStartIndex, dragEndIndex);
 }
 
 function addEventListenersToTasks(task) {
