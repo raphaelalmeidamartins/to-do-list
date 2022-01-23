@@ -1,3 +1,5 @@
+/* eslint-disable object-curly-spacing */
+/* eslint-disable quote-props */
 /* eslint-disable no-console */
 
 const taskList = document.getElementById('lista-tarefas');
@@ -150,12 +152,14 @@ function dragStart() {
   console.log('dragstart disparado');
 }
 
-function dragEntersElement() {
+function dragEntersElement(event) {
   console.log('dragenter disparado');
+  event.target.classList.add('dragover');
 }
 
-function dragLeavesElement() {
+function dragLeavesElement(event) {
   console.log('dragleaves disparado');
+  event.target.classList.remove('dragover');
 }
 
 function dropElement() {
@@ -200,16 +204,45 @@ function clearInputTask() {
 
 function saveTasks() {
   localStorage.clear();
-  const arrayListItems = taskList.children;
-  localStorage.setItem('savedList', JSON.stringify(arrayListItems));
-  console.log(arrayListItems);
+  const arrayListItems = [...taskList.children];
+  arrayListItems.forEach((task, index) => {
+    localStorage.setItem(`${index + 1}`, task.innerHTML);
+  });
 }
 
 buttonSaveTasks.addEventListener('click', saveTasks);
 
+function recoverEventListeners(task) {
+  const taskChildren = [...task.children];
+  taskChildren.forEach((child, index) => {
+    switch (index) {
+      case 0:
+        child.addEventListener('click', markItemAsCompleted);
+      break;
+      case 2:
+        child.addEventListener('keypress', pressEnterToEditTask);
+        child.addEventListener('blur', changeToEditTask);
+        break;
+      case 3:
+        child.addEventListener('click', editButtonAction);
+        break;
+      case 4:
+        child.addEventListener('click', removeSelectedListItem);
+        break;
+      default:
+        break;
+    }
+  });
+}
+
 function loadSavedTasks() {
-  const savedItems = JSON.parse(localStorage.getItem('savedList'));
-  savedItems.forEach((task) => taskList.appendChild(task));
+  for (let index = 0; index < localStorage.length; index += 1) {
+    const newTask = document.createElement('li');
+    newTask.innerHTML = localStorage.getItem(`${index + 1}`);
+    addEventListenersToTasks(newTask);
+    recoverEventListeners(newTask);
+    taskList.appendChild(newTask);
+  }
 }
 
 window.onload = () => {
