@@ -77,7 +77,7 @@
   }
 
   li.dragover {
-    transition: 400ms;
+    background-color: rgb(196, 176, 142);
   }
 
   .checkbox {
