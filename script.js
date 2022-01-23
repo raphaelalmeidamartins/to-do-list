@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const taskList = document.getElementById('lista-tarefas');
 const inputTaks = document.getElementById('texto-tarefa');
 const buttonAddTask = document.getElementById('criar-tarefa');
@@ -7,30 +9,6 @@ const buttonMoveToBelow = document.getElementById('mover-baixo');
 
 function removeSelectedListItem(event) {
   taskList.removeChild(event.target.parentNode);
-}
-
-function mouseOverElement(event) {
-  const draggedOverElement = event.target;
-  const previousDraggedOverElement = document.querySelector('.dragover');
-  if (previousDraggedOverElement) {
-    previousDraggedOverElement.classList.remove('dragover');
-  }
-  if (draggedOverElement.tagName === 'LI') {
-    draggedOverElement.classList.add('dragover');
-  }
-}
-
-function draggingItem(event) {
-  event.target.classList.add('dragging');
-}
-
-function draggingEnd(event) {
-  const draggedItem = event.target;
-  draggedItem.classList.remove('dragging');
-  const otherElement = document.querySelector('.dragover');
-  if (otherElement) {
-    taskList.insertBefore(draggedItem, otherElement.nextElementSibling);
-  }
 }
 
 function markItemAsCompleted(click) {
@@ -49,7 +27,7 @@ function markItemAsCompleted(click) {
 function editButtonAction(click) {
   const editInput = click.target.previousElementSibling;
   const currentTask = editInput.previousElementSibling;
-  editInput.value = currentTask.innerHTML;
+  editInput.value = currentTask.textContent;
   currentTask.style.display = 'none';
   editInput.style.display = 'flex';
   editInput.focus();
@@ -59,7 +37,7 @@ function editTask(input) {
   const editInput = input;
   const currentTask = editInput.previousElementSibling;
   if (editInput.value) {
-    currentTask.innerHTML = editInput.value;
+    currentTask.textContent = editInput.value;
     editInput.style.display = 'none';
     currentTask.style.display = 'flex';
     editInput.value = '';
@@ -133,7 +111,7 @@ function createTaskText(string) {
   const newTaskText = document.createElement('span');
   newTaskText.className = 'list-text';
   newTaskText.title = 'Tarefa';
-  newTaskText.innerHTML = string;
+  newTaskText.textContent = string;
   return newTaskText;
 }
 
@@ -164,6 +142,35 @@ function createRemoveButton() {
   return newRemoveButton;
 }
 
+function dragOver(event) {
+  event.preventDefault();
+}
+
+function dragStart() {
+  console.log('dragstart disparado');
+}
+
+function dragEntersElement() {
+  console.log('dragenter disparado');
+}
+
+function dragLeavesElement() {
+  console.log('dragleaves disparado');
+}
+
+function dropElement() {
+  console.log('drop disparado');
+}
+
+function addEventListenersToTasks(task) {
+  task.addEventListener('dragover', dragOver);
+  task.addEventListener('dragstart', dragStart);
+  task.addEventListener('dragenter', dragEntersElement);
+  task.addEventListener('dragleave', dragLeavesElement);
+  task.addEventListener('drop', dropElement);
+  task.draggable = 'true';
+}
+
 function addTaskOnTheList() {
   if (inputTaks.value) {
     const newTask = document.createElement('li');
@@ -172,11 +179,9 @@ function addTaskOnTheList() {
     newTask.appendChild(createInputEditTask());
     newTask.appendChild(createEditButton());
     newTask.appendChild(createRemoveButton());
-    newTask.addEventListener('dragover', mouseOverElement);
-    newTask.addEventListener('dragstart', draggingItem);
-    newTask.addEventListener('dragend', draggingEnd);
-    newTask.draggable = 'true';
+    addEventListenersToTasks(newTask);
     taskList.appendChild(newTask);
+    inputTaks.value = '';
   }
 }
 
@@ -196,29 +201,20 @@ function clearInputTask() {
 function saveTasks() {
   localStorage.clear();
   const arrayListItems = taskList.children;
-  for (let i = 0; i < arrayListItems.length; i += 1) {
-    localStorage.setItem(`${i + 1}`, `${arrayListItems[i].innerHTML}`);
-    localStorage.setItem(`${i + 1} className`, `${arrayListItems[i].className}`);
-  }
+  localStorage.setItem('savedList', JSON.stringify(arrayListItems));
+  console.log(arrayListItems);
 }
 
 buttonSaveTasks.addEventListener('click', saveTasks);
 
 function loadSavedTasks() {
-  for (let i = 0; i < (localStorage.length / 2); i += 1) {
-    const newTask = document.createElement('li');
-    newTask.innerHTML = localStorage.getItem(`${i + 1}`);
-    newTask.className = localStorage.getItem(`${i + 1} className`);
-    newTask.addEventListener('dblclick', markItemAsCompleted);
-    taskList.appendChild(newTask);
-  }
+  const savedItems = JSON.parse(localStorage.getItem('savedList'));
+  savedItems.forEach((task) => taskList.appendChild(task));
 }
 
-function onLoadPage() {
+window.onload = () => {
   clearInputTask();
   if (localStorage.length !== 0) {
     loadSavedTasks();
   }
-}
-
-window.onload = onLoadPage;
+};
