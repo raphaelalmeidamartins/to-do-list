@@ -1,15 +1,63 @@
+/* eslint-disable max-lines */
 /* eslint-disable object-curly-spacing */
 /* eslint-disable quote-props */
 /* eslint-disable no-console */
 
+// Seletores
 const taskList = document.getElementById('lista-tarefas');
 const inputTaks = document.getElementById('texto-tarefa');
 const buttonAddTask = document.getElementById('criar-tarefa');
 const buttonSaveTasks = document.getElementById('salvar-tarefas');
 const buttonMoveToAbove = document.getElementById('mover-cima');
 const buttonMoveToBelow = document.getElementById('mover-baixo');
+const buttonClearList = document.getElementById('apaga-tudo');
+const buttonClearCompletedItems = document.getElementById('remover-finalizados');
+
+// Seletores modals
+const firstModal = document.getElementById('modal-remover-finalizados');
+const secondModal = document.getElementById('modal-apaga-tudo');
+const thirdModal = document.getElementById('modal-error');
+const acceptRemoveCompleted = document.getElementById('confirmar-remover-finalizados');
+const cancelRemoveCompleted = document.getElementById('negar-remover-finalizados');
+const acceptClearList = document.getElementById('confirmar-apaga-tudo');
+const cancelClearList = document.getElementById('negar-apaga-tudo');
+const acceptError = document.getElementById('confirmar-erro');
+const errorParagraph = document.getElementById('error-paragraph');
 
 let dragStartIndex = 0;
+
+function callFirstModal() {
+  firstModal.style.display = 'block';
+}
+
+function callSecondModal() {
+  secondModal.style.display = 'block';
+}
+
+function removeModal(click) {
+  if (click.target.id === 'negar-remover-finalizados') {
+    firstModal.style.display = 'none';
+  }
+  if (click.target.id === 'negar-apaga-tudo') {
+    secondModal.style.display = 'none';
+  }
+  if (click.target.id === 'confirmar-erro') {
+    thirdModal.style.display = 'none';
+  }
+}
+
+function selectListItem(event) {
+  const selectedItem = event.target;
+  const previousSelectedItem = document.querySelector('.selected');
+  if (previousSelectedItem) {
+    previousSelectedItem.classList.remove('selected');
+  }
+  if (selectedItem.tagName === 'LI') {
+    selectedItem.classList.add('selected');
+  } else {
+    selectedItem.parentElement.classList.add('selected');
+  }
+}
 
 function removeSelectedListItem(event) {
   taskList.removeChild(event.target.parentNode);
@@ -72,8 +120,6 @@ function moveItemToAbove() {
   }
 }
 
-buttonMoveToAbove.addEventListener('click', moveItemToAbove);
-
 function moveItemToBelow() {
   const selectedItem = document.querySelector('.selected');
   if (selectedItem) {
@@ -84,24 +130,18 @@ function moveItemToBelow() {
   }
 }
 
-buttonMoveToBelow.addEventListener('click', moveItemToBelow);
-
 function clearList() {
+  secondModal.style.display = 'none';
   taskList.innerHTML = '';
 }
 
-const buttonClearList = document.getElementById('apaga-tudo');
-buttonClearList.addEventListener('click', clearList);
-
 function clearCompletedTasks() {
+  firstModal.style.display = 'none';
   const arrayListItems = [...document.querySelectorAll('.completed')];
   arrayListItems.forEach((item) => {
     taskList.removeChild(item.parentNode);
   });
 }
-
-const buttonClearCompletedItems = document.getElementById('remover-finalizados');
-buttonClearCompletedItems.addEventListener('click', clearCompletedTasks);
 
 function createGrip() {
   const newGrip = document.createElement('span');
@@ -122,7 +162,7 @@ function createTaskText(string) {
   const newTaskText = document.createElement('span');
   newTaskText.className = 'list-text';
   newTaskText.title = 'Tarefa';
-  newTaskText.textContent = string;
+  newTaskText.textContent = string.substr(0, 40);
   return newTaskText;
 }
 
@@ -176,8 +216,11 @@ function swapListItems(origin, destination) {
   const arrayListItems = [...taskList.children];
   const firstItem = arrayListItems[origin];
   const secondItem = arrayListItems[destination];
-
-  taskList.insertBefore(firstItem, secondItem.nextSibling);
+  if (origin < destination) {
+    taskList.insertBefore(firstItem, secondItem.nextSibling);
+  } else if (origin > destination) {
+    taskList.insertBefore(firstItem, secondItem);
+  }
 }
 
 function dropElement(event) {
@@ -189,8 +232,10 @@ function dropElement(event) {
 }
 
 function addEventListenersToTasks(task) {
-  task.addEventListener('dragover', dragOver);
+  task.addEventListener('click', selectListItem);
+  task.addEventListener('dragstart', selectListItem);
   task.addEventListener('dragstart', dragStart);
+  task.addEventListener('dragover', dragOver);
   task.addEventListener('dragenter', dragEntersElement);
   task.addEventListener('dragleave', dragLeavesElement);
   task.addEventListener('drop', dropElement);
@@ -199,6 +244,9 @@ function addEventListenersToTasks(task) {
 
 // eslint-disable-next-line max-statements
 function addTaskOnTheList() {
+  if ([...taskList.children].length >= 50) {
+    throw new Error('a lista já atingiu a quantidade máxima permitida de 50 itens.');
+  }
   if (inputTaks.value) {
     const newTask = document.createElement('li');
     newTask.appendChild(createGrip());
@@ -215,12 +263,14 @@ function addTaskOnTheList() {
 
 function pressEnterToAddTask(event) {
   if (event.key === 'Enter') {
-    addTaskOnTheList();
+    try {
+      addTaskOnTheList();
+    } catch (error) {
+      errorParagraph.textContent = `Erro: ${error.message}`;
+      thirdModal.style.display = 'block';
+    }
   }
 }
-
-buttonAddTask.addEventListener('click', addTaskOnTheList);
-inputTaks.addEventListener('keypress', pressEnterToAddTask);
 
 function clearInputTask() {
   inputTaks.value = '';
@@ -233,8 +283,6 @@ function saveTasks() {
     localStorage.setItem(`${index + 1}`, task.innerHTML);
   });
 }
-
-buttonSaveTasks.addEventListener('click', saveTasks);
 
 function recoverEventListeners(task) {
   const taskChildren = [...task.children];
@@ -268,6 +316,27 @@ function loadSavedTasks() {
     taskList.appendChild(newTask);
   }
 }
+
+// Escutadores
+buttonMoveToAbove.addEventListener('click', moveItemToAbove);
+buttonMoveToBelow.addEventListener('click', moveItemToBelow);
+buttonAddTask.addEventListener('click', () => {
+  try {
+    addTaskOnTheList();
+  } catch (error) {
+    errorParagraph.textContent = `Erro: ${error.message}`;
+    thirdModal.style.display = 'block';
+  }
+});
+inputTaks.addEventListener('keypress', pressEnterToAddTask);
+buttonSaveTasks.addEventListener('click', saveTasks);
+buttonClearCompletedItems.addEventListener('click', callFirstModal);
+buttonClearList.addEventListener('click', callSecondModal);
+acceptClearList.addEventListener('click', clearList);
+cancelClearList.addEventListener('click', removeModal);
+acceptRemoveCompleted.addEventListener('click', clearCompletedTasks);
+cancelRemoveCompleted.addEventListener('click', removeModal);
+acceptError.addEventListener('click', removeModal);
 
 window.onload = () => {
   clearInputTask();

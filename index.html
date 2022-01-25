@@ -17,7 +17,7 @@
     <div id="container-list">
       <section>
         <div class="painel-superior">
-          <input type="text" placeholder="Nova tarefa" id="texto-tarefa">
+          <input type="text" placeholder="Nova tarefa" maxlength="40" id="texto-tarefa">
           <div class="button-capsule">
             <button id="criar-tarefa" class="positivo">Adicionar</button>
           </div>
@@ -50,6 +50,34 @@
         <h4>Aviso de privacidade:</h6>
         <p>Esta aplicação não utiliza cookies, os dados ficam armazenados no seu navegador.</p>
       </aside>
+    </div>
+    <div id="modal-remover-finalizados" class="modal">
+      <p>Você tem certeza que deseja excluir as tarefas concluídas?</p>
+      <div class="modal-painel-inferior">
+        <div class="button-capsule">
+          <button id="confirmar-remover-finalizados" class="confirmar">Confirmar</button>
+        </div>
+        <div class="button-capsule">
+          <button id="negar-remover-finalizados" class="negativo">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    <div id="modal-apaga-tudo" class="modal">
+      <p>Você tem certeza que deseja limpar a lista?</p>
+      <div class="modal-painel-inferior">
+        <div class="button-capsule">
+          <button id="confirmar-apaga-tudo" class="confirmar">Confirmar</button>
+        </div>
+        <div class="button-capsule">
+          <button id="negar-apaga-tudo" class="negativo">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    <div id="modal-error" class="modal">
+      <p id="error-paragraph">Placeholder</p>
+      <div class="button-capsule">
+        <button id="confirmar-erro" class="positivo">OK</button>
+      </div>
     </div>
   </main>
   <footer>

@@ -27,6 +27,43 @@
     border-radius: 1rem;
     transition: 400ms;
   }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(248 , 228 , 193);
+    width: 280px;
+    border-radius: 1rem;
+    transition: 400ms;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 20px rgba(46 , 13 , 35, 0.5);
+  }
+
+  .modal p {
+    font-size: 20px;
+    margin-bottom: 2rem;
+  }
+
+  .modal-painel-inferior {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  #modal-error * {
+    justify-content: flex-end;
+  }
+
+  .confirmar {
+    background-color: rgb(84, 141, 76);
+    color: rgb(248 , 228 , 193);
+    box-shadow: 0px 5px rgb(37, 87, 39);
+    padding: 10px 20px;
+  }
   
   #container-list {
     padding: 1.5rem 2rem;
@@ -61,7 +98,7 @@
   }
   
   ol li {
-    padding: 5px;
+    padding: 5px 10px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -103,7 +140,9 @@
   }
   
   .list-text {
+    max-width: 540px;
     flex-grow: 1;
+    word-break: break-word;
   }
   
   .remove-button, .edit-button {
@@ -193,10 +232,9 @@
   }
   
   .selected {
-    background-color: gray;
-    color: rgb(248 , 228 , 193);
+    box-shadow: 0 0 15px rgba(46 , 13 , 35, 0.5);;
   }
-  
+
   .completed {
     font-style: italic;
     text-decoration: line-through solid black;
