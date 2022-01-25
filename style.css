@@ -34,7 +34,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(248 , 228 , 193);
+    background-color: rgba(46 , 13 , 35, 0.9);
     width: 280px;
     border-radius: 1rem;
     transition: 400ms;
@@ -45,6 +45,7 @@
   .modal p {
     font-size: 20px;
     margin-bottom: 2rem;
+    color: rgb(248 , 228 , 193);
   }
 
   .modal-painel-inferior {
@@ -204,6 +205,10 @@
   
   footer a {
     color: rgb(46 , 13 , 35);
+  }
+
+  footer p {
+    margin-bottom: 10px;
   }
   
   .painel-superior {
