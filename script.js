@@ -94,10 +94,10 @@ const buttonClearList = document.getElementById('apaga-tudo');
 buttonClearList.addEventListener('click', clearList);
 
 function clearCompletedTasks() {
-  const arrayListItems = document.querySelectorAll('.completed');
-  for (let i = 0; i < arrayListItems.length; i += 1) {
-    taskList.removeChild(arrayListItems[i]);
-  }
+  const arrayListItems = [...document.querySelectorAll('.completed')];
+  arrayListItems.forEach((item) => {
+    taskList.removeChild(item.parentNode);
+  });
 }
 
 const buttonClearCompletedItems = document.getElementById('remover-finalizados');
