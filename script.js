@@ -231,6 +231,11 @@ function dropElement(event) {
   swapListItems(dragStartIndex, dragEndIndex);
 }
 
+function dragEnd() {
+  const draggedElement = document.querySelector('.dragging');
+  draggedElement.classList.remove('dragging');
+}
+
 function addEventListenersToTasks(task) {
   task.addEventListener('click', selectListItem);
   task.addEventListener('dragstart', selectListItem);
@@ -239,6 +244,7 @@ function addEventListenersToTasks(task) {
   task.addEventListener('dragenter', dragEntersElement);
   task.addEventListener('dragleave', dragLeavesElement);
   task.addEventListener('drop', dropElement);
+  task.addEventListener('dragend', dragEnd);
   task.draggable = 'true';
 }
 
@@ -288,17 +294,17 @@ function recoverEventListeners(task) {
   const taskChildren = [...task.children];
   taskChildren.forEach((child, index) => {
     switch (index) {
-      case 0:
+      case 1:
         child.addEventListener('click', markItemAsCompleted);
       break;
-      case 2:
+      case 3:
         child.addEventListener('keypress', pressEnterToEditTask);
         child.addEventListener('blur', changeToEditTask);
         break;
-      case 3:
+      case 4:
         child.addEventListener('click', editButtonAction);
         break;
-      case 4:
+      case 5:
         child.addEventListener('click', removeSelectedListItem);
         break;
       default:
