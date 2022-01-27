@@ -5,35 +5,79 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
   <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
   <title>To-do List - Raphael Martins</title>
 </head>
 <body>
   <main>
-    <section>
-      <header>
-        <h1>Minha Lista de Tarefas</h1>
-      </header>
-      <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-      <div class="painel-superior">
-        <input type="text" id="texto-tarefa">
-        <button id="criar-tarefa" class="positivo">Adicionar</button>
+    <header>
+      <h1>Minha Lista de Tarefas</h1>
+    </header>
+    <div id="container-list">
+      <section>
+        <div class="painel-superior">
+          <input type="text" placeholder="Nova tarefa" maxlength="40" id="texto-tarefa">
+          <div id="criar-tarefa-completo" class="button-capsule">
+            <button id="criar-tarefa" class="positivo">Adicionar</button>
+          </div>
+          <div class="button-capsule criar-tarefa-mobile">
+            <button id="criar-tarefa-mobile" class="positivo"><span class="fas fa-plus"></span></button>
+          </div>
+        </div>
+        <ol id="lista-tarefas">
+        </ol>
+        <div class="painel-inferior">
+          <div class="container-move-buttons">
+            <div class="button-capsule">
+              <button id="mover-cima" class="fas fa-caret-up icone subir-descer" title="Mover para cima"></button>
+            </div>
+            <div class="button-capsule">
+              <button id="mover-baixo" class="fas fa-caret-down icone subir-descer" title="Mover para baixo"></button>
+            </div>
+          </div>
+          <div class="container-other-buttons">
+            <div class="button-capsule">
+              <button id="remover-finalizados" class="negativo">Limpar Concluídos</button>
+            </div>
+            <div class="button-capsule">
+              <button id="apaga-tudo" class="negativo">Limpar Lista</button>
+            </div>
+            <div class="button-capsule salvar-tarefas">
+              <button id="salvar-tarefas" class="positivo">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div id="modal-remover-finalizados" class="modal">
+      <p>Você tem certeza que deseja excluir as tarefas concluídas?</p>
+      <div class="modal-painel-inferior">
+        <div class="button-capsule">
+          <button id="confirmar-remover-finalizados" class="confirmar">Confirmar</button>
+        </div>
+        <div class="button-capsule">
+          <button id="negar-remover-finalizados" class="negativo">Cancelar</button>
+        </div>
       </div>
-      <ol id="lista-tarefas">
-      </ol>
-      <div class="painel-inferior">
-        <button id="remover-selecionado" class="icone negativo" title="Excluir selecionado">🞬</button>
-        <button id="mover-cima" class="icone subir-descer" title="Mover para cima">⮝</button>
-        <button id="mover-baixo" class="icone subir-descer" title="Mover para baixo">⮟</button>
-        <button id="remover-finalizados" class="negativo">Limpar Concluídos</button>
-        <button id="apaga-tudo" class="negativo">Limpar Lista</button>
-        <button id="salvar-tarefas" class="positivo">Salvar</button>
+    </div>
+    <div id="modal-apaga-tudo" class="modal">
+      <p>Você tem certeza que deseja limpar a lista?</p>
+      <div class="modal-painel-inferior">
+        <div class="button-capsule">
+          <button id="confirmar-apaga-tudo" class="confirmar">Confirmar</button>
+        </div>
+        <div class="button-capsule">
+          <button id="negar-apaga-tudo" class="negativo">Cancelar</button>
+        </div>
       </div>
-    </section>
-    <aside id="privacidade">
-      <h4>Aviso de privacidade:</h6>
-      <p>Esta aplicação não utiliza cookies, os dados ficam armazenados no seu navegador.</p>
-    </aside>
+    </div>
+    <div id="modal-error" class="modal">
+      <p id="error-paragraph">Placeholder</p>
+      <div class="button-capsule">
+        <button id="confirmar-erro" class="positivo">OK</button>
+      </div>
+    </div>
   </main>
   <footer>
     <p>Projeto de HTML, CSS e JavaScript desenvolvido por <a href="https://www.linkedin.com/in/raphaelameidamartins/" rel="external">Raphael Martins</a>, todos os direitos reservados.</p>
