@@ -18,8 +18,11 @@
       <section>
         <div class="painel-superior">
           <input type="text" placeholder="Nova tarefa" maxlength="40" id="texto-tarefa">
-          <div class="button-capsule">
+          <div id="criar-tarefa-completo" class="button-capsule">
             <button id="criar-tarefa" class="positivo">Adicionar</button>
+          </div>
+          <div class="button-capsule criar-tarefa-mobile">
+            <button id="criar-tarefa-mobile" class="positivo"><span class="fas fa-plus"></span></button>
           </div>
         </div>
         <ol id="lista-tarefas">
@@ -40,7 +43,7 @@
             <div class="button-capsule">
               <button id="apaga-tudo" class="negativo">Limpar Lista</button>
             </div>
-            <div class="button-capsule">
+            <div class="button-capsule salvar-tarefas">
               <button id="salvar-tarefas" class="positivo">Salvar</button>
             </div>
           </div>

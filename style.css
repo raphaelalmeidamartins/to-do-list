@@ -8,7 +8,345 @@
   padding: 0;
 }
 
-@media screen and (min-width: 790px) and (min-height: 790px) {
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-family: Quicksand, sans-serif;
+  font-weight: 300;
+  color: rgb(46 , 13 , 35);
+  background-color: rgb(247 , 128 , 60);
+}
+
+main {
+  margin: 90px 0 0;
+  background-color: rgb(248 , 228 , 193);
+  flex-basis: content;
+  border-radius: 1rem;
+  transition: 400ms;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(46 , 13 , 35, 0.9);
+  width: 280px;
+  border-radius: 1rem;
+  transition: 400ms;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 20px rgba(46 , 13 , 35, 0.5);
+}
+
+.modal p {
+  font-size: 20px;
+  margin-bottom: 2rem;
+  color: rgb(248 , 228 , 193);
+}
+
+.modal-painel-inferior {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+#modal-error * {
+  justify-content: flex-end;
+}
+
+.confirmar {
+  background-color: rgb(84, 141, 76);
+  color: rgb(248 , 228 , 193);
+  box-shadow: 0px 5px rgb(37, 87, 39);
+  padding: 10px 20px;
+}
+
+#container-list {
+  padding: 1.5rem 2rem;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 2rem 1rem;
+  border-radius: 1rem 1rem 0 0;
+  background-color: rgb(46 , 13 , 35);
+}
+
+header h1 {
+  font-weight: 700;
+  color: rgb(248 , 228 , 193);
+  font-size: 2.5rem;
+}
+
+ol {
+  border-top: 1px solid rgba(46 , 13 , 35, 0.5);
+  list-style: none;
+  list-style-position: inside;
+  margin: 1.5rem 0;
+}
+
+ol li {
+  padding: 10px 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: fit-content;
+  font-size: 20px;
+  transition: 400ms;
+  border-bottom: 1px solid rgba(46 , 13 , 35, 0.5);
+  /* cursor: move; */
+}
+
+li.dragging {
+  opacity: .4;
+}
+
+li.dragover {
+  background-color: rgb(196, 176, 142);
+}
+
+.grip {
+  font-size: 25px;
+  margin-right: 12px;
+  opacity: 0.5;
+  cursor: move;
+}
+
+.grip:hover {
+  opacity: 1;
+}
+
+.checkbox {
+  font-size: 25px;
+  margin-right: 12px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.checkbox:hover {
+  opacity: 1;
+}
+
+.list-text {
+  max-width: 540px;
+  flex-grow: 1;
+  word-break: break-word;
+}
+
+.remove-button, .edit-button {
+  margin-left: 12px;
+  color: rgb(46 , 13 , 35);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.remove-button:hover, .edit-button:hover {
+  opacity: 1;
+}
+
+.button-capsule {
+  display: flex;
+  align-items: flex-start;
+  height: 49.59px;
+}
+
+.button-capsule:active {
+  align-items: flex-end;
+  transition: 400ms;
+}
+
+button {
+  font-family: Quicksand, sans-serif;
+  font-size: 20px;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(120%);
+}
+
+button:active {
+  box-shadow: 0px 0px;
+}
+
+input[type="text"] {
+  font-family: Quicksand, sans-serif;
+  font-size: 20px;
+  flex-grow: 1;
+  height: 22px;
+  padding: 0.8rem;
+  margin-right: 12px;
+  border-radius: 0.5rem;
+}
+
+input.edit-input {
+  height: 12px;
+}
+
+footer {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+footer a {
+  color: rgb(46 , 13 , 35);
+}
+
+footer p {
+  margin-bottom: 10px;
+}
+
+.painel-superior {
+  display: flex;
+  align-items: stretch;
+}
+
+.painel-inferior {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.container-move-buttons {
+  display: flex;
+}
+
+.container-other-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container-other-buttons button {
+  margin-left: 12px;
+}
+
+.selected {
+  box-shadow: 0 0 15px rgba(46 , 13 , 35, 0.5);;
+}
+
+.completed {
+  font-style: italic;
+  text-decoration: line-through solid black;
+}
+
+.icone {
+  font-size: 45px;
+  padding: 0 10px;
+  margin-right: 12px;
+  background-color: rgb(248 , 228 , 193);
+}
+
+.negativo {
+  background-color: rgb(245 , 72 , 40);
+  color: rgb(248 , 228 , 193);
+  box-shadow: 0px 5px rgb(204, 68, 44);
+  padding: 10px 20px;
+}
+
+.positivo {
+  background-color: rgb(76 , 96 , 141);
+  color: rgb(248 , 228 , 193);
+  box-shadow: 0px 5px rgb(37, 52, 87);
+  padding: 10px 20px;
+}
+
+.subir-descer {
+  color: rgb(248 , 228 , 193);
+  background-color: rgb(247 , 128 , 60);
+  box-shadow: 0px 5px rgb(194, 103, 51);
+}
+
+.remover {
+  font-size: 35px;
+  padding: 5px 10px;
+  color: rgb(248 , 228 , 193);
+  background-color: rgb(245 , 72 , 40);
+  box-shadow: 0px 5px rgb(204, 68, 44);
+}
+
+#privacidade {
+  height: 70px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 679px) {
+  body {
+    background-color: rgb(248 , 228 , 193);
+  }
+  
+  header {
+    border-radius: 0;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    margin-top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  body {
+    width: 100vw;
+  }
+
+  #criar-tarefa-completo {
+    display: none;
+  }
+
+  .painel-superior input {
+    width: 90%;
+  }
+
+  .container-move-buttons {
+    display: none;
+  }
+
+  .container-other-buttons {
+    flex-wrap: wrap-reverse;
+    width: 100%;
+  }
+
+  .painel-inferior {
+    justify-content: center;
+  }
+
+  .container-other-buttons div button {
+    margin: 0;
+    width: 100%;
+  }
+
+  .container-other-buttons div {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  ol li input {
+    width: 50%;
+  }
+
+  footer {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 680px) {
   body {
     display: flex;
     flex-flow: column nowrap;
@@ -83,12 +421,6 @@
     font-weight: 700;
     color: rgb(248 , 228 , 193);
     font-size: 2.5rem;
-  }
-  
-  #funcionamento {
-    font-style: italic;
-    font-size: 20px;
-    margin-bottom: 30px;
   }
   
   ol {
@@ -252,6 +584,10 @@
     background-color: rgb(248 , 228 , 193);
   }
   
+  .criar-tarefa-mobile {
+    display: none;
+  }
+
   .negativo {
     background-color: rgb(245 , 72 , 40);
     color: rgb(248 , 228 , 193);
@@ -289,4 +625,3 @@
     margin-top: 40px;
   }  
 }
-
