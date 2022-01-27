@@ -1,5 +1,3 @@
-<small>(for the English version, <a href="#en">click here</a>)</small>
-
 ![Prévia da página - Preview of the page](./preview.gif)
 
 # To-do List
