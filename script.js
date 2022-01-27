@@ -7,6 +7,7 @@
 const taskList = document.getElementById('lista-tarefas');
 const inputTaks = document.getElementById('texto-tarefa');
 const buttonAddTask = document.getElementById('criar-tarefa');
+const buttonAddTaskMobile = document.getElementById('criar-tarefa-mobile');
 const buttonSaveTasks = document.getElementById('salvar-tarefas');
 const buttonMoveToAbove = document.getElementById('mover-cima');
 const buttonMoveToBelow = document.getElementById('mover-baixo');
@@ -327,6 +328,14 @@ function loadSavedTasks() {
 buttonMoveToAbove.addEventListener('click', moveItemToAbove);
 buttonMoveToBelow.addEventListener('click', moveItemToBelow);
 buttonAddTask.addEventListener('click', () => {
+  try {
+    addTaskOnTheList();
+  } catch (error) {
+    errorParagraph.textContent = `Erro: ${error.message}`;
+    thirdModal.style.display = 'block';
+  }
+});
+buttonAddTaskMobile.addEventListener('click', () => {
   try {
     addTaskOnTheList();
   } catch (error) {
