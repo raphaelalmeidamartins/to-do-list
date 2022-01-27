@@ -13,6 +13,6 @@
 <p>We developed a dynamic and interactive web page with a to-do list application. The user can change the order of the list items, mark them as completed, or delete them. It's also possible to save the list, so when the user enters the page again, it is the same way as it was left.</p>
 <p><a href="https://raphaelalmeidamartins.github.io/to-do-list/" target="_blank">Click here</a> to check out the final version of the project on your browser.</p>
 
-![Preview of the mobile version - Prévia da versão para dispositivos móveis](./mobile.preview.png)
+![Preview of the mobile version - Prévia da versão para dispositivos móveis](./mobile-preview.png)
 
 ![My grade of the project - Minha nota no projeto](./nota.png)
