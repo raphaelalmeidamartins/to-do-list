@@ -227,8 +227,6 @@ function swapListItems(origin, destination) {
 function dropElement(event) {
   event.target.classList.remove('dragover');
   const dragEndIndex = [...taskList.children].indexOf(event.target);
-  const draggedElement = document.querySelector('.dragging');
-  draggedElement.classList.remove('dragging');
   swapListItems(dragStartIndex, dragEndIndex);
 }
 
