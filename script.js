@@ -147,14 +147,14 @@ function clearCompletedTasks() {
 function createGrip() {
   const newGrip = document.createElement('span');
   newGrip.className = 'fas fa-grip-vertical grip';
-  newGrip.title = 'Mover item de posição';
+  newGrip.title = 'Swap task position';
   return newGrip;
 }
 
 function createCheckbox() {
   const newCheckbox = document.createElement('span');
   newCheckbox.className = 'far fa-square checkbox';
-  newCheckbox.title = 'Marcar tarefa como concluída';
+  newCheckbox.title = 'Mask task as completed';
   newCheckbox.addEventListener('click', markItemAsCompleted);
   return newCheckbox;
 }
@@ -162,7 +162,7 @@ function createCheckbox() {
 function createTaskText(string) {
   const newTaskText = document.createElement('span');
   newTaskText.className = 'list-text';
-  newTaskText.title = 'Tarefa';
+  newTaskText.title = 'Task';
   newTaskText.textContent = string.substr(0, 40);
   return newTaskText;
 }
@@ -170,7 +170,7 @@ function createTaskText(string) {
 function createEditButton() {
   const newEditButton = document.createElement('span');
   newEditButton.className = 'fas fa-edit edit-button';
-  newEditButton.title = 'Editar tarefa';
+  newEditButton.title = 'Edit task';
   newEditButton.addEventListener('click', editButtonAction);
   return newEditButton;
 }
@@ -189,7 +189,7 @@ function createInputEditTask() {
 function createRemoveButton() {
   const newRemoveButton = document.createElement('span');
   newRemoveButton.className = 'fas fa-trash-alt remove-button';
-  newRemoveButton.title = 'Remover tarefa';
+  newRemoveButton.title = 'Remove task';
   newRemoveButton.addEventListener('click', removeSelectedListItem);
   return newRemoveButton;
 }
