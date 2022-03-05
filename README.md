@@ -15,6 +15,7 @@ We developed a dynamic and interactive web page with a to-do list application. T
 * HTML5
 * CSS3
 * JavaScript ES6+
+* Font Awesome (icon library)
 
 ## :iphone: Mobile version
 
