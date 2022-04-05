@@ -313,7 +313,10 @@ function recoverEventListeners(task) {
 }
 
 function loadSavedTasks() {
-  for (let index = 0; index < localStorage.length; index += 1) {
+  const savedTasks = Object.keys(localStorage)
+    .filter((key) => key.match(/[0-9]*/))
+    .map((key) => localStorage[key]);
+  for (let index = 0; index < savedTasks.length; index += 1) {
     const newTask = document.createElement('li');
     newTask.innerHTML = localStorage.getItem(`${index + 1}`);
     addEventListenersToTasks(newTask);
@@ -353,7 +356,7 @@ acceptError.addEventListener('click', removeModal);
 
 window.onload = () => {
   clearInputTask();
-  if (localStorage.length !== 0) {
+  if (Object.keys(localStorage).filter((key) => key.match(/[0-9]*/)).length !== 0) {
     loadSavedTasks();
   }
 };
