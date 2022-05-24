@@ -322,7 +322,7 @@ function loadSavedTasks() {
     .map((key) => localStorage[key]);
   for (let index = 0; index < savedTasks.length; index += 1) {
     const newTask = document.createElement('li');
-    newTask.innerHTML = localStorage.getItem(`${index + 1}`);
+    newTask.innerHTML = localStorage.getItem(`listItem-${index + 1}`);
     addEventListenersToTasks(newTask);
     recoverEventListeners(newTask);
     taskList.appendChild(newTask);
