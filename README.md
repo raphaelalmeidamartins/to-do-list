@@ -18,7 +18,7 @@ We developed a dynamic and interactive web page with a to-do list application. T
 <details>
   <summary markdown="span"><strong>:brazil: Português</strong></summary><br />
 
-Projeto React desenvolvido por [Raphael Martins](https://www.linkedin.com/in/raphaelameidamartins/) ao final do Bloco 5 ([Módulo Fundamentos do Desenvolvimento Web](https://github.com/raphaelalmeidamartins/trybe_exercicios/tree/main/1_fundamentos-do-desv-web)) do curso da Trybe. Fui aprovado com 100% dos requisitos obrigatórios e opcionais atingidos.
+Projeto de HTML, CSS e JavaScript desenvolvido por [Raphael Martins](https://www.linkedin.com/in/raphaelameidamartins/) ao final do Bloco 5 ([Módulo Fundamentos do Desenvolvimento Web](https://github.com/raphaelalmeidamartins/trybe_exercicios/tree/main/1_fundamentos-do-desv-web)) do curso da Trybe. Fui aprovado com 100% dos requisitos obrigatórios e opcionais atingidos.
 
 Tivemos que desenvolver uma página dinâmica com uma aplicação de lista de tarefas. O usuário pode mudar a ordem dos itens da lista, marcá-los como concluídos ou deletá-los. Também é possível salvar a lista para que quando o usuário acesse novamente, esteja como antes.
 
