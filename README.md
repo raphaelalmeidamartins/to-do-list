@@ -26,7 +26,7 @@ Tivemos que desenvolver uma página dinâmica com uma aplicação de lista de ta
 <br />
 </details>
 
-## :man_technologist: Developed Skills
+## :man_technologist: Developed Skills/Habilidades Desenvolvidas
 
 <details>
   <summary markdown="span"><strong>:us: English</strong></summary><br />
